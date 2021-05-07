@@ -12,7 +12,8 @@ public class Main {
      */
     public static void gradeMessage(int grade) {
         /*
-        TODO: Your code for part A is here...
+        In order to decrease complexity, we decreased the number of cases in the jump table.
+        100-91
          */
 
         int compressed_grade = (grade / 10) - 7;
@@ -64,14 +65,31 @@ public class Main {
             }
 
             Integer len_of_seq = end - begin;
-            begin = end;
+            begin = end - 1; // cause the for loop will add the 1
 
-            compressedString.concat(first_of_seq + len_of_seq.toString());
+            compressedString += first_of_seq + len_of_seq.toString();
+            //System.out.println(compressedString);
 
 
         }
 
         return compressedString;
+    }
+
+    public static String get_sequence(String str, int i){
+
+        String seq = "";
+
+        int len = str.length();
+        for (;i < len; ++i){
+            char c = str.charAt(i);
+            if (c >= 'A' && c <= 'z')
+                seq += String.valueOf(c);
+            else
+                break;
+        }
+
+        return seq;
     }
 
     /**
@@ -95,22 +113,29 @@ public class Main {
         int len = compressedString.length();
 
         for (int i = 0; i < len; ++i){
-            char c = compressedString.charAt(i);
+            String seq = get_sequence(compressedString, i);
+            int len_seq = seq.length();
+            int num_to_dup = 0;
 
-            int current_num = compressedString.charAt(i + 1) - '0';
-            for (int begin = i + 2; begin < len; ++begin){
-                char curr = compressedString.charAt(begin);
-                if (curr >= 'A' && curr <= 'z'){
-                    i = begin;
+            int j;
+            for (j = i + len_seq; j < len; ++j) {
+                char c = compressedString.charAt(j);
+                if (c >= 'A' && c <= 'z'){
+                    i = j - 1;
                     break;
                 }
-                current_num = current_num * 10 + (curr - '0');
+                int num = c - '0';
+                num_to_dup *= 10;
+                num_to_dup += num;
+
             }
 
-            for (int j = 0; j < current_num; ++j){
-                decompressedString.concat(String.valueOf(c));
+            for (int k = 0; k < num_to_dup; ++k){
+                decompressedString += seq;
             }
 
+            if (!(j < len))
+                break;
         }
 
 
