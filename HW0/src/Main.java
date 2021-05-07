@@ -13,7 +13,7 @@ public class Main {
     public static void gradeMessage(int grade) {
         /*
         In order to decrease complexity, we decreased the number of cases in the jump table.
-        100-91
+
          */
 
         int compressed_grade = (grade / 10) - 7;
@@ -31,7 +31,7 @@ public class Main {
                 System.out.println("Excellent");
                 break;
             default:
-                System.out.println("OK");
+                System.out.println("OK"); //otherwise, print 'OK'
         }
     }
 
@@ -53,7 +53,12 @@ public class Main {
         TODO: Your code for part B1 is here...
         Note: you may change the given code, but you must not change the signature of the method.
          */
-        int len = stringToCompress.length();
+        int len = stringToCompress.length(); // get the len of the string
+
+        /*
+        * begin is the index of beginning of the seq of similar chars
+        * end is the index of the end
+        * */
         for (int begin = 0; begin < len; ++begin){
             char first_of_seq = stringToCompress.charAt(begin);
 
@@ -64,18 +69,23 @@ public class Main {
                 }
             }
 
-            Integer len_of_seq = end - begin;
+            Integer len_of_seq = end - begin; // end - begin is the count of similar chars
             begin = end - 1; // cause the for loop will add the 1
 
-            compressedString += first_of_seq + len_of_seq.toString();
-            //System.out.println(compressedString);
-
-
+            compressedString += first_of_seq + len_of_seq.toString(); // concat the strings
         }
 
         return compressedString;
     }
-
+    /**
+     * Get the seq of letters before the first number in str starting from a given location
+     *
+     * It's guaranteed that he string contains only letters and numbers
+     *
+     * @param i index to start the search from
+     * @param str the string to search
+     * @return All the letters from i (inclusive) to the first number (exclusive) in order.
+     * */
     public static String get_sequence(String str, int i){
 
         String seq = "";
@@ -83,9 +93,9 @@ public class Main {
         int len = str.length();
         for (;i < len; ++i){
             char c = str.charAt(i);
-            if (c >= 'A' && c <= 'z')
+            if (c >= 'A' && c <= 'z') // There's no numbers between 'A' and 'z'
                 seq += String.valueOf(c);
-            else
+            else // Reached the end of the letters seq
                 break;
         }
 
@@ -113,27 +123,33 @@ public class Main {
         int len = compressedString.length();
 
         for (int i = 0; i < len; ++i){
-            String seq = get_sequence(compressedString, i);
+            String seq = get_sequence(compressedString, i); // get a seq
             int len_seq = seq.length();
-            int num_to_dup = 0;
+            int num_to_dup = 0; // will store the number of times the seq should be duplicated
 
             int j;
+            // convert the numbers after the seq into int
             for (j = i + len_seq; j < len; ++j) {
                 char c = compressedString.charAt(j);
                 if (c >= 'A' && c <= 'z'){
+                    // if c isn't a number, we reached the end of the number
                     i = j - 1;
                     break;
                 }
+
+                // converting to number
                 int num = c - '0';
                 num_to_dup *= 10;
                 num_to_dup += num;
 
             }
 
+            // append the seq, the num_to_dup times
             for (int k = 0; k < num_to_dup; ++k){
                 decompressedString += seq;
             }
 
+            // if the for loop exited because we reached the end of the string, we finished.
             if (!(j < len))
                 break;
         }
