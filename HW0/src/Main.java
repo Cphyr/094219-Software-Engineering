@@ -19,16 +19,16 @@ public class Main {
         int compressed_grade = (grade / 10) - 7;
         switch (compressed_grade){
             case 0:
-                System.out.println("Good");
+                System.out.println("Good"); //grade/10 -7 =0 <=> grade/10=7 <=> 70<=grade<=79
                 break;
             case 1:
-                System.out.println("Very Good");
+                System.out.println("Very Good"); //grade/10 -7 =1 <=> grade/10=8 <=> 80<=grade<=89
                 break;
             case 2:
-                System.out.println("Great");
+                System.out.println("Great"); //grade/10 -7=2 <=> grade/10=89 <=> 890<=grade<=99
                 break;
             case 3:
-                System.out.println("Excellent");
+                System.out.println("Excellent"); //grade/10 -7=3 <=> grade/10=10 <=> grade=100
                 break;
             default:
                 System.out.println("OK"); //otherwise, print 'OK'
