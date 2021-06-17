@@ -20,6 +20,7 @@ public class Main {
             String player1 = scanner.nextLine();
             String player2 = scanner.nextLine();
             WarGame game = new WarGame(player1, player2);
+            game.initializeGame();
             String winner = game.start();
             System.out.println("+++++++++++++++++++++++++++++++++++++++");
             System.out.println(winner + " won the game!\n\n");

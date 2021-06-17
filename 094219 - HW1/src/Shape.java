@@ -4,22 +4,22 @@ public enum Shape {
      */
     Clubs {
         public String toString() {
-            return "♠";
+            return String.valueOf('\u2660');
         }
     },
     Diamonds {
         public String toString() {
-            return "♦";
+            return String.valueOf('\u2666');
         }
     },
     Spades {
         public String toString() {
-            return "♣";
+            return String.valueOf('\u2663');
         }
     },
     Hearts {
         public String toString() {
-            return "♥";
+            return String.valueOf('\u2665');
         }
     }
 }

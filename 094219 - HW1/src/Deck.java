@@ -34,6 +34,10 @@ public class Deck {
         else deck = new LinkedList<Card>();
     }
 
+    public LinkedList<Card> getDeck() {
+        return deck;
+    }
+
     public void addCard(Card card) {
         /**
          * @since   1.0

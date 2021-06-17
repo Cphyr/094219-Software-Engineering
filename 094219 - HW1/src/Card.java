@@ -61,6 +61,23 @@ public class Card
          * @return  string of format: val of shape(emoji)
          * @since   1.0
          */
-        return String.valueOf(num) + " of " + shape.toString();
+        String msg;
+        switch (num){
+            case 1:
+                msg="Ace";
+                break;
+            case 11:
+                msg="Jack";
+                break;
+            case 12:
+                msg="Queen";
+                break;
+            case 13:
+                msg="King";
+                break;
+            default:
+                msg=String.valueOf(num);
+        }
+        return msg + " of " + shape.toString();
     }
 }
