@@ -1,22 +1,27 @@
 public class File extends StorageItem{
-    private String end;
+    private String ending;
     private String content;
-    public File(String name,String end){
-        super(name);
-        this.end=end;
-        this.size=0;
-        this.content="";
+
+    public int getSize() {
+        return content.length();
     }
 
-    @Override
-    public int getSize() {
-        return this.size;
+    public File(String _name, String _ending) {
+        super(_name);
+        ending = _ending;
+        content = "";
     }
-    public String getName(){
-        return this.name;
+
+    public void addContent(String contentToAdd){
+        content += contentToAdd;
     }
-    public void AddContent(String contentToAdd){
-        this.content= this.content+contentToAdd;
-        this.size+=contentToAdd.length();
+
+    public void printContent() {
+        System.out.println(this.getName() + " Size: " + this.getSize() + "MB Created: " + super.getDate());
+        System.out.println(this.content);
+    }
+
+    public String getName() {
+        return (super.getName() + "." + ending);
     }
 }

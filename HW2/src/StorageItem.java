@@ -1,14 +1,23 @@
-public class StorageItem {
-    public String name;
-    protected final double date;
-    protected int size;
+abstract public class StorageItem {
+    private String name;
+    private final double date;
+    private int size;
+
+    abstract public int getSize();
+
     public StorageItem(String name){
-        this.name=name;
-        this.date=0; //change later
+        this.name = name;
+        this.date = 0; //change later
     }
 
-    public int getSize() {
-        return size;
+    public String getName() {
+        return name;
     }
 
+    public double getDate() {
+        return date;
+    }
+    public void printTree(SortingField field) {
+        // TODO
+    }
 }
