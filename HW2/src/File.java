@@ -1,4 +1,4 @@
-public class File extends StorageItem{
+public class File extends StorageItem {
     private String ending;
     private String content;
 
@@ -12,7 +12,7 @@ public class File extends StorageItem{
         content = "";
     }
 
-    public void addContent(String contentToAdd){
+    public void addContent(String contentToAdd) {
         content += contentToAdd;
     }
 
