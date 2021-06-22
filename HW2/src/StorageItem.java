@@ -12,16 +12,17 @@ abstract public class StorageItem {
     public StorageItem(String name) {
         /**
          * Makes a StorageItem
-         * @param   name    (string) the StorageItem's name
+         * 
+         * @param name (string) the StorageItem's name
          */
         this.name = name;
-        this.date = MakeDate(); // change later
+        this.date = MakeDate();
     }
 
     public long abs(long num) {
         /**
-         * Returns the absolute value
-         * @params  num     (long) the number
+         * @params num (long) the number
+         * @return (long) the abs value
          */
         if (num >= 0)
             return num;
@@ -30,11 +31,11 @@ abstract public class StorageItem {
 
     public Timestamp MakeDate() {
         /**
-         * Generates a new TimeStamp
+         * @returns (Timestamp) random timestamp
          */
         Timestamp first = Timestamp.valueOf("2017-1-1 00:00:00");
         Timestamp second = Timestamp.valueOf("2021-12-31 23:59:59");
-        //  calculates the number of milliseconds between the dates/
+        // calculates the number of milliseconds between the dates/
         long numOfMilli = second.getTime() - first.getTime();
         long mill = Main.rnd.nextLong();
         mill = abs(mill % numOfMilli);
@@ -53,10 +54,11 @@ abstract public class StorageItem {
     public void sortTree(SortingField field) {
         /**
          * Sorts the tree based on a given SortingField
-         * @params  field   (SortingField) the SortingField to sort by.
+         * 
+         * @params field (SortingField) the SortingField to sort by.
          */
         Comparator<StorageItem> comparator;
-        //  Makes the correct Comparator object;
+        // Makes the correct Comparator object;
         if (field == SortingField.DATE) {
             comparator = Comparator.comparing(StorageItem::getDate).thenComparing(StorageItem::getName);
         } else if (field == SortingField.NAME) {
@@ -72,16 +74,18 @@ abstract public class StorageItem {
     public void printTree(SortingField field) {
         /**
          * Calls a different PrintTree
-         * @param   field   (SortingField) the SortingField to sort by.
+         * 
+         * @param field (SortingField) the SortingField to sort by.
          */
         printTree(0, field);
     }
 
     public void printTree(int depth, SortingField field) {
         /**
-         *  Prints the tree
-         * @param   depth   (int) the depth in the tree the StorageItem is
-         * @param   field   (SortingField) the SortingField to sort by.
+         * Prints the tree
+         * 
+         * @param depth (int) the depth in the tree the StorageItem is
+         * @param field (SortingField) the SortingField to sort by.
          */
         sortTree(field);
         String start = "";
