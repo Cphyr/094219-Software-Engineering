@@ -6,22 +6,38 @@ public class File extends StorageItem {
         return content.length();
     }
 
-    public File(String _name, String _ending) {
-        super(_name);
-        ending = _ending;
+    public File(String name, String ending) {
+        /**
+         * The constructor
+         * @param   name    (string) the files name
+         * @param   ending    (string) the files ending
+         */
+        super(name);
+        this.ending = ending;
         content = "";
     }
 
-    public void addContent(String contentToAdd) {
+    public void addContent(String contentToAdd)
+    {
+        /**
+         * Adds content
+         * @param contentToAdd (String) The string to add
+         */
         content += contentToAdd;
     }
 
     public void printContent() {
+        /**
+         * Prints the content of the file.
+         */
         System.out.println(this.getName() + " Size: " + this.getSize() + "MB Created: " + super.getDate());
         System.out.println(this.content);
     }
 
     public String getName() {
+        /**
+         * Returns the name of the file
+         */
         return (super.getName() + "." + ending);
     }
 }
