@@ -44,10 +44,16 @@ abstract public class StorageItem {
     }
 
     public String getName() {
+        /**
+         * @returns (String) the name
+         */
         return name;
     }
 
     public Timestamp getDate() {
+        /**
+         * @returns (TimeStamp) the date
+         */
         return date;
     }
 

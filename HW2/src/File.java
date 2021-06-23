@@ -36,7 +36,7 @@ public class File extends StorageItem {
 
     public String getName() {
         /**
-         * Returns the name of the file
+         * @return  (String) the name of the file
          */
         return (super.getName() + "." + ending);
     }
