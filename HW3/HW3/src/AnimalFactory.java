@@ -5,6 +5,9 @@ public abstract class AnimalFactory {
 class UnicornFactory extends AnimalFactory{
     @Override
     public Animal createAnimal(){
+        /**
+         * @return: (animal) a new Unicorn
+         */
         return new Unicorn();
     }
 }
@@ -12,6 +15,9 @@ class UnicornFactory extends AnimalFactory{
 class ZebraFactory extends AnimalFactory{
     @Override
     public Animal createAnimal(){
+        /**
+         * @return: (animal) a new Zebra
+         */
         return new Zebra();
     }
 }
@@ -20,6 +26,9 @@ class ZebraFactory extends AnimalFactory{
 class MonkeyFactory extends AnimalFactory{
     @Override
     public Animal createAnimal(){
+        /**
+         * @return: (animal) a new Monkey
+         */
         return new Monkey();
     }
 }

@@ -9,6 +9,6 @@ public class ZooObserver{
          * @param   msg     the notification
          * @since   
          */
-        // TODO : Add implementation
+        System.out.println("["+name+"] "+msg);
     }
 }
